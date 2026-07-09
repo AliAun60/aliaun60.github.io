@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ali Aun Haider — Software Engineer</title>
+<meta name="description" content="Ali Aun Haider — Software Engineer. Full-stack and AI engineering, RAG pipelines, and accessible web experiences.">
+<style>
+  :root{
+    --bg:#0a0b10;
+    --bg-soft:#12141c;
+    --card:#161923;
+    --border:#242838;
+    --text:#e7e9f0;
+    --muted:#9aa0b4;
+    --accent:#6c8cff;
+    --accent-2:#57e0c8;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+
+  /* Nav */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(10,11,16,.72);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;letter-spacing:.5px}
+  .brand span{color:var(--accent)}
+  nav.links{display:flex;gap:26px}
+  nav.links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+  nav.links a:hover{color:var(--text)}
+  @media(max-width:680px){nav.links{display:none}}
+
+  /* Hero */
+  .hero{padding:110px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-200px;right:-160px;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(108,140,255,.22),transparent 70%);filter:blur(20px);z-index:0}
+  .hero::after{content:"";position:absolute;bottom:-260px;left:-160px;width:480px;height:480px;
+    background:radial-gradient(circle,rgba(87,224,200,.14),transparent 70%);filter:blur(20px);z-index:0}
+  .hero-inner{position:relative;z-index:1}
+  .eyebrow{color:var(--accent-2);font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+  .hero h1{font-size:clamp(38px,7vw,66px);line-height:1.05;font-weight:800;letter-spacing:-1.5px;margin-bottom:20px}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:19px;max-width:660px;margin-bottom:34px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;
+    transition:transform .15s,box-shadow .2s,background .2s,border-color .2s}
+  .btn-primary{background:linear-gradient(120deg,var(--accent),#8aa2ff);color:#0a0b10}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(108,140,255,.6)}
+  .btn-ghost{border:1px solid var(--border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
+
+  section{padding:66px 0}
+  .sec-head{margin-bottom:34px}
+  .sec-head .kicker{color:var(--accent);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+  .sec-head h2{font-size:32px;font-weight:800;letter-spacing:-.5px;margin-top:8px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:16px}
+  .facts{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+  .fact{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .fact:last-child{border-bottom:none}
+  .fact .k{color:var(--muted);white-space:nowrap}
+  .fact .v{font-weight:600;text-align:right}
+
+  /* Experience */
+  .exp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+  .exp .role{font-size:19px;font-weight:700}
+  .exp .meta{color:var(--accent-2);font-size:14px;font-weight:600;margin:4px 0 16px}
+  .exp ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .exp li{position:relative;padding-left:22px;color:var(--muted);font-size:15px}
+  .exp li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:2px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+
+  /* Skills */
+  .skillgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .sg{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+  .sg h3{font-size:15px;color:var(--accent);margin-bottom:14px;letter-spacing:.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{background:var(--bg-soft);border:1px solid var(--border);padding:7px 13px;border-radius:999px;font-size:13px;color:var(--text);transition:border-color .2s,color .2s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* Projects */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+  .pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;
+    transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column}
+  .pcard:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+  .pcard .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .pcard .dot{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));opacity:.9}
+  .pcard .badge{font-size:11px;color:var(--muted);border:1px solid var(--border);padding:4px 9px;border-radius:6px}
+  .pcard h3{font-size:18px;margin-bottom:10px}
+  .pcard p{color:var(--muted);font-size:14px;margin-bottom:18px;flex:1}
+  .pcard .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .pcard .tags span{font-size:12px;color:var(--accent-2);background:rgba(87,224,200,.08);padding:4px 10px;border-radius:6px}
+  .pcard a.link{font-size:14px;font-weight:600;color:var(--accent)}
+  .pcard a.link:hover{text-decoration:underline}
+
+  /* Certs */
+  .certlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .cert{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+  .cert .name{font-weight:600;font-size:15px}
+  .cert .issuer{color:var(--muted);font-size:13px;margin-top:4px}
+
+  /* Contact */
+  .contact{text-align:center;background:var(--bg-soft);border-top:1px solid var(--border)}
+  .contact h2{font-size:34px;font-weight:800;margin-bottom:14px}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+  .social{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .social a{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);
+    border-radius:12px;font-size:15px;font-weight:500;transition:border-color .2s,color .2s,transform .15s}
+  .social a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">Ali Aun<span>.</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Software Engineer · AI &amp; Full-Stack</div>
+    <h1>Hi, I'm Ali Aun Haider.<br>I build <span class="grad">AI-powered</span> products, end to end.</h1>
+    <p class="lead">Computer Science graduate (Magna Cum Laude, Miami University) who ships full-stack applications, RAG pipelines, and LLM-backed systems — with a strong foundation in accessibility and clean, standards-compliant engineering.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#projects">View my work →</a>
+      <a class="btn btn-ghost" href="mailto:aliaunhaider00@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">About</div><h2>A bit about me</h2></div>
+    <div class="about-grid">
+      <div class="about">
+        <p>I'm a software engineer focused on building AI-powered applications from the ground up. My senior capstone was a production RAG tutoring platform: a full agentic flow from query to retrieval to LLM generation, with guardrails and evaluation keeping outputs grounded, containerized with Docker and shipped through CI/CD.</p>
+        <p>Alongside AI work, I have a deep front-end and accessibility background. Over two years in Miami University's IT Services I audited hundreds of digital platforms against WCAG 2.1, doing code-level root-cause analysis across macOS, Windows, iOS, and Android, and trained new hires on the testing methodology.</p>
+        <p>I like breaking problems to their core and rebuilding them a better way — with strong CS fundamentals in data structures, algorithms, systems, and databases underneath.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="k">Degree</span><span class="v">B.S. Computer Science</span></div>
+        <div class="fact"><span class="k">School</span><span class="v">Miami University</span></div>
+        <div class="fact"><span class="k">Minor</span><span class="v">Mathematics</span></div>
+        <div class="fact"><span class="k">GPA</span><span class="v">3.83 · Magna Cum Laude</span></div>
+        <div class="fact"><span class="k">Honors</span><span class="v">President's List ×2, Dean's List ×6</span></div>
+        <div class="fact"><span class="k">Location</span><span class="v">Maryland, USA</span></div>
+        <div class="fact"><span class="k">Status</span><span class="v">Open to opportunities</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">Experience</div><h2>Where I've worked</h2></div>
+    <div class="exp">
+      <div class="role">Web Accessibility — Miami University, IT Services</div>
+      <div class="meta">April 2024 – May 2026</div>
+      <ul>
+        <li>Audited hundreds of digital platforms against WCAG 2.1, including Workday, Zoom, Slack, Webex, and Handshake.</li>
+        <li>Performed code-level root-cause analysis of HTML, CSS, and ARIA to pinpoint exactly where each issue originated.</li>
+        <li>Tested cross-platform and cross-device across macOS, Windows, iOS, and Android using screen readers (NVDA, JAWS), Axe DevTools, and Access Assistant.</li>
+        <li>Documented every finding with recommended remediations and wrote structured, actionable defect reports for developers and IT.</li>
+        <li>Trained and onboarded new hires on the accessibility testing process and methodology.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">Projects</div><h2>Selected work</h2></div>
+    <div class="cards">
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">Capstone</span></div>
+        <h3>AI Tutor — RAG Platform</h3>
+        <p>Course-aware AI tutoring platform shipped end to end: Flask/Python REST APIs, a RAG pipeline over course content with embeddings and vector retrieval, and a full agentic flow with guardrails and output validation. Containerized with Docker and deployed via CI/CD.</p>
+        <div class="tags"><span>Flask</span><span>RAG</span><span>OpenAI</span><span>Docker</span><span>MySQL</span></div>
+        <a class="link" href="https://github.com/aliaun60/Tutor-Ai" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">ML</span></div>
+        <h3>Predictive Analytics Lab</h3>
+        <p>Automated evaluation pipeline benchmarking 7 model architectures (XGBoost, Random Forest, SVM, ANN, KNN, and more) on a common dataset, with hyperparameter tuning, k-fold cross-validation, and F1 / ROC-AUC scoring. Reached ~94% accuracy.</p>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>pandas</span></div>
+        <a class="link" href="https://github.com/aliaun60/predictive-analytics-lab" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">Full-Stack</span></div>
+        <h3>HOME NEXUS — Real Estate App</h3>
+        <p>Real estate web application with property listings, search and filter, and a coordinated front-end/back-end. Led a 4-person team through task division, planning, and delivery as team lead.</p>
+        <div class="tags"><span>HTML/CSS/JS</span><span>Team Lead</span><span>Full-Stack</span></div>
+        <a class="link" href="https://github.com/aliaun60/home-nexus" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">Java</span></div>
+        <h3>Streaming Services Explorer</h3>
+        <p>Java + MySQL application with search and filter over streaming content, using JDBC connectivity and prepared statements to guard against SQL injection.</p>
+        <div class="tags"><span>Java</span><span>MySQL</span><span>JDBC</span><span>SQL</span></div>
+        <a class="link" href="https://github.com/aliaun60/streaming-services-explorer" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">Python</span></div>
+        <h3>Job Agent</h3>
+        <p>A Python agent for automating parts of the job-search workflow — parsing, matching, and streamlining repetitive application tasks.</p>
+        <div class="tags"><span>Python</span><span>Automation</span><span>Agents</span></div>
+        <a class="link" href="https://github.com/aliaun60/job-agent" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <div class="pcard">
+        <div class="top"><div class="dot"></div><span class="badge">Web</span></div>
+        <h3>Customer Orders App</h3>
+        <p>A web application for managing customer orders, with a clean interface over structured order data and a straightforward create/read/update flow.</p>
+        <div class="tags"><span>HTML</span><span>JavaScript</span><span>Web</span></div>
+        <a class="link" href="https://github.com/aliaun60/customer-orders-app" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+    </div>
+    <p style="margin-top:26px;color:var(--muted);font-size:15px">More on <a href="https://github.com/aliaun60" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">github.com/aliaun60</a> — 12 repositories and counting.</p>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">Skills</div><h2>What I work with</h2></div>
+    <div class="skillgroups">
+      <div class="sg">
+        <h3>Languages</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">PHP</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+      </div>
+      <div class="sg">
+        <h3>AI / ML Engineering</h3>
+        <div class="chips"><span class="chip">LLM Integration</span><span class="chip">RAG Pipelines</span><span class="chip">Embeddings &amp; Vector Stores</span><span class="chip">Agentic Workflows</span><span class="chip">Prompt Engineering</span><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">pandas / NumPy</span></div>
+      </div>
+      <div class="sg">
+        <h3>Web &amp; Backend</h3>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">SQLAlchemy</span><span class="chip">Microservices</span><span class="chip">Bootstrap</span></div>
+      </div>
+      <div class="sg">
+        <h3>Databases</h3>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Chroma DB</span><span class="chip">FAISS</span><span class="chip">Database Design</span></div>
+      </div>
+      <div class="sg">
+        <h3>Cloud &amp; DevOps</h3>
+        <div class="chips"><span class="chip">GCP</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Terraform</span><span class="chip">Git / GitHub / GitLab</span><span class="chip">Linux</span></div>
+      </div>
+      <div class="sg">
+        <h3>Accessibility &amp; QA</h3>
+        <div class="chips"><span class="chip">WCAG 2.1</span><span class="chip">Axe DevTools</span><span class="chip">Access Assistant</span><span class="chip">NVDA</span><span class="chip">JAWS</span><span class="chip">VoiceOver</span><span class="chip">Unit Testing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">Credentials</div><h2>Certifications</h2></div>
+    <div class="certlist">
+      <div class="cert"><div class="name">AI Fluency: Framework &amp; Foundations</div><div class="issuer">Anthropic · Jun 2026</div></div>
+      <div class="cert"><div class="name">Claude 101</div><div class="issuer">Anthropic · Jun 2026</div></div>
+      <div class="cert"><div class="name">Foundations in Semiconductor Manufacturing (OASiS)</div><div class="issuer">Miami University · Jan 2026</div></div>
+      <div class="cert"><div class="name">Technology, Ethics &amp; Global Society</div><div class="issuer">Miami University · May 2025</div></div>
+      <div class="cert"><div class="name">Testing with Screen Readers: A User-flow Case Study</div><div class="issuer">Level Access · Jul 2024</div></div>
+      <div class="cert"><div class="name">Creating Accessible Documents Using Word</div><div class="issuer">Level Access · May 2024</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's build something</h2>
+    <p>I'm open to software, AI/ML, and full-stack opportunities. Reach out and let's talk.</p>
+    <div class="social">
+      <a href="mailto:aliaunhaider00@gmail.com">✉ Email</a>
+      <a href="https://github.com/aliaun60" target="_blank" rel="noopener">⌥ GitHub</a>
+      <a href="https://www.linkedin.com/in/aliaunhaider/" target="_blank" rel="noopener">in LinkedIn</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">↓ Resume</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Ali Aun Haider · Built with care for the web.</div>
+</footer>
+
+</body>
+</html>
